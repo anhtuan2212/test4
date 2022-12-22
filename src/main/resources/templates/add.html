@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <title>Trang Chủ</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body class="container">
+<h1 style="text-align: center">Form</h1>
+<form th:action="@{save}" th:object="${student}" action="#" method="post">
+  <label for="name" class="form-label" >Họ Tên</label>
+  <input th:field="*{name}" type="text" id="name" class="form-control" placeholder="Name">
+
+  <label for="date" class="form-label">Ngày Sinh</label>
+  <input th:field="*{dateOfBirth}" type="text" id="date" class="form-control" placeholder="MM/DD/YYYY">
+
+  <label for="majo" class="form-label">Chuyên Ngành</label>
+  <input th:field="*{majoring}" type="text"  id="majo" class="form-control" placeholder="majoring">
+
+  <label class="form-label">Trạng Thái</label>
+  <input th:field="*{status}" type="text" class="form-control" placeholder="true or false " >
+<!--  <select class="form-select form-select-sm" aria-label=".form-select-sm example" th:field="*{status}">-->
+<!--    <option value="1">Dang Học</option>-->
+<!--    <option value="0">Đã Nghỉ</option>-->
+<!--  </select>-->
+  <button type="submit" class="btn btn-success">Thêm</button>
+</form>
+<br>
+<a class="btn btn-primary" href="/index">Trở Về</a>
+</body>
+</html>
