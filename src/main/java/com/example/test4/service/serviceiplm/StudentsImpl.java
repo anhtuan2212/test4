@@ -6,6 +6,8 @@ import com.example.test4.service.StudentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class StudentsImpl implements StudentsService {
     @Autowired
@@ -18,11 +20,6 @@ public class StudentsImpl implements StudentsService {
     @Override
     public Student update(Student student) {
         return studentRepository.save(student);
-    }
-
-    @Override
-    public Student getByID(Integer id) {
-        return studentRepository.findById(id).get();
     }
 
     @Override

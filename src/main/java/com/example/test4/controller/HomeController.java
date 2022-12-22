@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
 
 @Controller
 public class HomeController {
-
+//    HttpServletRequest request ;
+//    HttpSession session = request.getSession();
     @Autowired
     StudentRepository studentRepository;
     @Autowired
@@ -38,6 +38,18 @@ public class HomeController {
         return ("redirect:/index");
     }
 
+
+
+    @RequestMapping(value = "edit" ,method = RequestMethod.POST)
+    public String edit (Student student){
+
+//        student.setId(id);
+        studentsService.create(student);
+        return ("redirect:/index");
+    }
+
+
+
     @GetMapping("/add")
     public String add (Model model){
         model.addAttribute("student",new Student());
@@ -47,9 +59,8 @@ public class HomeController {
 
     @GetMapping("/update")
     public String update (@RequestParam("id") Integer id,Model model){
-        Student lst = studentRepository.getById(id);
-        model.addAttribute("student",lst);
-        System.out.println(lst);
+        Optional<Student> editstudent = studentRepository.findById(id);
+        editstudent.ifPresent(student -> model.addAttribute("studen",student));
         return ("/update");
     }
 

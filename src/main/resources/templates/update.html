@@ -8,7 +8,7 @@
 </head>
 <body class="container">
 <h1 style="text-align: center">Form</h1>
-<form th:object="${student}"  th:action="@{save}" action="#"  method="post">
+<form th:object="${studen}"  th:action="@{edit?id={id}(id=${studen.id})}" action="#"  method="post">
   <label for="name" class="form-label" >Họ Tên</label>
   <input th:field="*{name}" type="text" id="name" class="form-control">
 
@@ -20,11 +20,7 @@
 
   <label class="form-label">Trạng Thái</label>
   <input th:field="*{status}" type="text" class="form-control">
-<!--  <select class="form-select form-select-sm" aria-label=".form-select-sm example" >-->
-<!--    <option value="1">Dang Học</option>-->
-<!--    <option value="0">Đã Nghỉ</option>-->
-<!--  </select>-->
-<button type="submit" class="btn btn-success">Lưu</button>
+<button type="submit" class="btn btn-success" th:href="@{/edit?id={id}(id=${studen.id})}">Lưu</button>
 </form>
 <br>
 <a class="btn btn-primary" href="/index">Trở Về</a>
